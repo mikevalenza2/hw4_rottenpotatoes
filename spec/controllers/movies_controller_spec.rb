@@ -15,10 +15,12 @@ describe MoviesController do
       post :similar, :id=>1
       response.should render_template('similar')
     end
-    it 'should make the search results available to the template' do
-      Movie.stub(:similar).and_return(@fake_results)
-      post :similar, :id=>1
-      assigns(:movies).should == @fake_results
+    context 'movie has a director' do
+      it 'should make the search results available to the template' do
+        Movie.stub(:similar).and_return(@fake_results)
+        post :similar, :id=>1
+        assigns(:movies).should == @fake_results
+      end
     end
   end
 end

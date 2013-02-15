@@ -66,5 +66,17 @@ class MoviesController < ApplicationController
 
   def similar
     @movies = Movie.similar(params[:id].to_i)   
+    #@movies.each do |m|
+    #    puts "Testing..." + m.title
+    #end
+    #puts "Testing..." + @movies.length.to_s
+    #puts "Testing number of elements returned..." + @movies.length.to_s
+    #@first_movie = @movies[@movies.keys[0]]
+    @first_movie = @movies[0]
+    #puts "Testing..." + @first_movie.title
+    if @first_movie.director == ''
+       flash[:notice] = "'#{@first_movie.title}' has no director info"
+       redirect_to movies_path
+    end
   end
 end

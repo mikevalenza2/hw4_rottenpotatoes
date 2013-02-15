@@ -7,10 +7,11 @@ class Movie < ActiveRecord::Base
     #puts "Testing..." + Movie.find(id).to_s
     #puts "Testing..." + Movie.find(id).director.to_s
     #puts "Testing..." + Movie.find_all_by_director(Movie.find(id).director).to_s
-    #find_all_by_director(Movie.find(id).director).each do |movie|
-    #    puts "Testing movie:" + movie.title
-    #end
+    find_all_by_director(Movie.find(id).director).each do |movie|
+        puts "Testing movie:" + movie.title
+    end
 
+    @director = Movie.find(id).director
     Movie.find_all_by_director(Movie.find(id).director)
   end
 end
