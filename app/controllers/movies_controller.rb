@@ -66,6 +66,5 @@ class MoviesController < ApplicationController
 
   def similar
     @movies = Movie.similar(params[:id].to_i)   
-:wq
   end
 end

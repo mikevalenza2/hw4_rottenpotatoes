@@ -4,6 +4,13 @@ class Movie < ActiveRecord::Base
   end
 
   def self.similar(id)
-    Movie.find_by_director(Movie.find(id))
+    #puts "Testing..." + Movie.find(id).to_s
+    #puts "Testing..." + Movie.find(id).director.to_s
+    #puts "Testing..." + Movie.find_all_by_director(Movie.find(id).director).to_s
+    #find_all_by_director(Movie.find(id).director).each do |movie|
+    #    puts "Testing movie:" + movie.title
+    #end
+
+    Movie.find_all_by_director(Movie.find(id).director)
   end
 end
